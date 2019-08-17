@@ -1,26 +1,25 @@
 import * as express from 'express';
-import { morgan } from 'morgan';
+import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser'
 const cors = require('cors');
-
-// const sequelize = require('./api/connfig/db.config');
+import { sequelize } from './api/config/db.config'
 // const userRoutes = require('./api/routes/user');
 const app = express();
 
-// sequelize.authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
-// sequelize.sync({ force: false }).then(() => {
-//   console.log('Drop and Resync with { force: false }');
-// })
-// .catch(err => {
-//   console.error('Unable to connect to the database:', err);
-// });
+sequelize.sync({ force: false }).then(() => {
+  console.log('Drop and Resync with { force: false }');
+})
+.catch(err => {
+  console.error('Unable to connect to the database:', err);
+});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));

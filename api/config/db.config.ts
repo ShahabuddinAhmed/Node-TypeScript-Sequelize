@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('testdb', 'root', '', {
+export const sequelize = new Sequelize('testdb', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -19,10 +19,5 @@ const arr = [
   sequelize,
   Sequelize
 ];
-const User = require('./../models/user')(...arr);
-const Book = require('./../models/book')(...arr);
-db.User;
-db.Book;
-User.hasOne(Book);
-
-module.exports = sequelize;
+db.User = require('./../models/user');
+db.Book = require('./../models/book');
