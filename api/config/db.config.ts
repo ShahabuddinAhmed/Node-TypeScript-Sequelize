@@ -19,5 +19,6 @@ const arr = [
   sequelize,
   Sequelize
 ];
-db.User = require('./../models/user');
-db.Book = require('./../models/book');
+
+db.User = require('./../models/user')(...arr);
+db.Book = require('./../models/book')(...arr);
